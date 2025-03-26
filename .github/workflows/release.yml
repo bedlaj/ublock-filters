@@ -1,0 +1,56 @@
+name: Create Release with Combined List
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up date and file
+        run: |
+          DATE=$(date +"%d/%m/%Y")
+
+          echo "[Adblock Plus 2.0]" > combined.list
+          echo "! Homepage: https://bedla.eu" >> combined.list
+          echo "! Title: Bedla custom filter list" >> combined.list
+          echo "! Last change: $DATE" >> combined.list
+          echo "! List maintainers: bedla" >> combined.list
+          echo "! GitHub repository: https://github.com/bedlaj/ublock-filters" >> combined.list
+          echo "! GitHub contributors: https://github.com/bedlaj/ublock-filters/graphs/contributors" >> combined.list
+          echo "! Expires: 1 days" >> combined.list
+          echo "! License: CC-BY-SA v4.0" >> combined.list
+          echo "! Email: adblock@bedla.eu" >> combined.list
+          echo "! Supported filters: https://adblockplus.org/en/filters" >> combined.list
+          echo "!" >> combined.list
+          echo "! ----------Bedla custom blocking rules ---------- !" >> combined.list
+          echo "!" >> combined.list
+
+          find . -type f -name "*.list" | sort | while read -r file; do
+            echo "! $file" >> combined.list
+            cat "$file" >> combined.list
+            echo "" >> combined.list
+          done
+
+      - name: Get latest tag
+        id: get_tag
+        run: |
+          latest_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          echo "Latest tag: $latest_tag"
+          version=$(echo $latest_tag | awk -F. '{printf("v%d.%d.%d", $1+0, $2+0, $3+1)}')
+          echo "version=$version" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.get_tag.outputs.version }}
+          name: Release ${{ steps.get_tag.outputs.version }}
+          files: combined.list
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
