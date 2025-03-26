@@ -32,7 +32,7 @@ jobs:
           echo "! ----------Bedla custom blocking rules ---------- !" >> combined.list
           echo "!" >> combined.list
 
-          find . -type f -name "*.list" | sort | while read -r file; do
+          find . -type f -name "*.list" ! -path "./combined.list" | sort | while read -r file; do
             echo "! $file" >> combined.list
             cat "$file" >> combined.list
             echo "" >> combined.list
