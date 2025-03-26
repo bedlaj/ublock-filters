@@ -44,6 +44,7 @@ jobs:
       - name: Get and increment latest tag
         id: get_tag
         run: |
+          git fetch --tags
           latest_tag=$(git tag --sort=-v:refname | head -n 1 || echo "v0.0.0")
           echo "Latest tag: $latest_tag"
           version=$(echo $latest_tag | sed 's/^v//' | awk -F. '{ printf("v%d.%d.%d", $1, $2, $3+1) }')
