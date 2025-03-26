@@ -1,0 +1,4 @@
+youtube.com##.ytd-rich-shelf-renderer.style-scope
+youtube.com##.ytd-reel-shelf-renderer.style-scope
+youtube.com##ytd-thumbnail-overlay-time-status-renderer[overlay-style="SHORTS"]:upward(ytd-video-renderer)
+youtube.com##ytd-permission-role-bottom-bar-renderer.ytd-app.style-scope
