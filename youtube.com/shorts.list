@@ -1,7 +1,12 @@
-youtube.com##.ytd-rich-shelf-renderer.style-scope
-youtube.com##.ytd-reel-shelf-renderer.style-scope
-youtube.com##ytd-thumbnail-overlay-time-status-renderer[overlay-style="SHORTS"]:upward(ytd-video-renderer)
-youtube.com##ytd-permission-role-bottom-bar-renderer.ytd-app.style-scope
+! Hide Shorts shelves on homepage and channel pages
+youtube.com##ytd-rich-section-renderer:has(h2>a[href^="/shorts/"])
+youtube.com##ytd-reel-shelf-renderer:has(h2>a[href^="/shorts/"])
 
-! hide suggested actions
+! Hide individual Shorts videos in feeds (e.g., subscriptions)
+youtube.com##ytd-rich-item-renderer:has(a[href^="/shorts/"])
+
+! Hide the "Shorts" tab on the side navigation menu
+youtube.com##ytd-guide-entry-renderer:has(a[href="/shorts"])
+
+! Hide suggested actions
 youtube.com##.ytShortsSuggestedActionViewModelStaticHost
