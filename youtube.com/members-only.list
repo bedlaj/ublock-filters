@@ -1,5 +1,2 @@
-! hide members only recommendations
-youtube.com##ytd-compact-video-renderer:has(div.badge[aria-label="Members only"])
-
-! hide members only videos from homepage
-youtube.com##ytd-rich-item-renderer:has(.badge-style-type-members-only[aria-label="Members only"])
+    ! Hide members-only videos from feeds and recommendations
+    youtube.com##:is(ytd-compact-video-renderer, ytd-rich-item-renderer):has([aria-label="Members only"])
