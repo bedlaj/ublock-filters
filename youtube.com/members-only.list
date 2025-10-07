@@ -1,2 +1,2 @@
 ! Hide members-only videos from feeds and recommendations
-youtube.com##:is(ytd-compact-video-renderer, ytd-rich-item-renderer):has([aria-label="Members only"])
+youtube.com##:is(yt-lockup-view-model):has-text(Members only)
