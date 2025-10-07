@@ -1,0 +1,3 @@
+! Hide Auto-dubbed videos from feeds and recommendations
+youtube.com##:is(yt-lockup-view-model):has-text(Auto-dubbed)
+youtube.com##.ytd-feed-entry-renderer:has-text(Auto-dubbed)
