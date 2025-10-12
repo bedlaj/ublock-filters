@@ -3,3 +3,9 @@ youtube.com##ytd-rich-item-renderer:has(span[class*="metadata-item"]:has-text(/\
 
 ! Hide videos with < 1000 views from player page recommendations
 youtube.com##yt-lockup-view-model:has(span[class*="metadata"]:has-text(/\b\d{1,3} views\b/i))
+
+! Hide videos with no views from home/subscription feeds
+youtube.com##ytd-rich-item-renderer:has(span[class*="metadata-item"]:has-text(No views))
+
+! Hide videos with no views from player page recommendations
+youtube.com##yt-lockup-view-model:has(span[class*="metadata"]:has-text(No views))
