@@ -1,3 +1,5 @@
 ! Hide members-only videos from feeds and recommendations
 youtube.com##:is(yt-lockup-view-model):has-text(Members only)
 youtube.com##.ytd-feed-entry-renderer:has-text(Members only)
+youtube.com##:is(yt-lockup-view-model):has-text(Members first)
+youtube.com##.ytd-feed-entry-renderer:has-text(Members first)
